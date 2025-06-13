@@ -18,6 +18,33 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sitecore Sofia User Group",
   description: "Join our community of Sitecore developers, architects, and enthusiasts in Sofia, Bulgaria.",
+  metadataBase: new URL('https://sitecore-sofia.vercel.app'),
+  openGraph: {
+    title: "Sitecore Sofia User Group",
+    description: "Join our community of Sitecore developers, architects, and enthusiasts in Sofia, Bulgaria.",
+    url: 'https://sitecore-sofia.vercel.app',
+    siteName: 'Sitecore Sofia User Group',
+    images: [
+      {
+        url: '/sofia.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sitecore Sofia User Group'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sitecore Sofia User Group',
+    description: 'Join our community of Sitecore developers, architects, and enthusiasts in Sofia, Bulgaria.',
+    images: ['/sofia.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({

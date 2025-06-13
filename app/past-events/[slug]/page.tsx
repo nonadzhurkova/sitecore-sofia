@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -34,6 +35,45 @@ interface Props {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const event = events[slug];
+
+  if (!event) {
+    return {
+      title: 'Event Not Found',
+      description: 'The requested event could not be found.',
+    };
+  }
+
+  return {
+    title: event.title,
+    description: event.shortDescription,
+    openGraph: {
+      title: event.title,
+      description: event.shortDescription,
+      url: `https://sitecore-sofia.vercel.app/past-events/${slug}`,
+      siteName: 'Sitecore Sofia User Group',
+      images: [
+        {
+          url: event.coverImage,
+          width: 1200,
+          height: 630,
+          alt: event.title
+        }
+      ],
+      locale: 'en_US',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: event.title,
+      description: event.shortDescription,
+      images: [event.coverImage],
+    },
+  };
 }
 
 export async function generateStaticParams() {
