@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Header from "./components/header";
-import Footer from "./components/footer";
 import Hero from "./components/hero";
 import About from "./components/about-box";
 import EventHero from "./components/event-hero";
+import CookieConsentBanner from "./components/CookieConsentBanner";
+
 export default function Home() {
   const currentEventDetails = [
     "Talks about the latest in web development",
@@ -14,8 +14,6 @@ export default function Home() {
 
   return (
    <div className="overflow-x-hidden">
-      <Header/>
-      <main className="pt-4"> 
       <Hero 
           title="Welcome to Sitecore Sofia User Group"
           subtitle="Join Our Community of Sitecore Developers, Architects, and Enthusiasts"
@@ -43,9 +41,7 @@ export default function Home() {
           backgroundImage="/sofia.jpg"
           isUpcoming={true}
         />
-      </main>
-      <Footer/>
-       
+      <CookieConsentBanner />
     </div>
   );
 }
