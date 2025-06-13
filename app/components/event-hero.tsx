@@ -2,6 +2,8 @@
 
 import { useCallback, useRef, useState } from 'react';
 import confetti from 'canvas-confetti';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface EventHeroProps {
     title: string;
@@ -12,6 +14,7 @@ interface EventHeroProps {
     registrationLink: string;
     backgroundImage: string;
     isUpcoming?: boolean;
+    isPast?: boolean;
 }
 
 export default function EventHero({ 
@@ -22,7 +25,8 @@ export default function EventHero({
     time, 
     registrationLink, 
     backgroundImage, 
-    isUpcoming = false 
+    isUpcoming = false,
+    isPast = false
 }: EventHeroProps) {
     // Rest of the component stays exactly the same
     const [isHovering, setIsHovering] = useState(false);
@@ -84,6 +88,74 @@ export default function EventHero({
             clearTimeout(hoverTimerRef.current);
         }
     }, []);
+
+    if (isPast) {
+        return (
+            <section className="relative bg-zinc-900">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 py-12 px-4">
+                    {/* Text Content */}
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="inline-block bg-zinc-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Past Event
+                            </span>
+                        </div>
+                        <h1 className="text-[#E42325] text-2xl md:text-3xl font-bold">
+                            {title}
+                        </h1>
+                        <p className="text-zinc-200 text-base md:text-lg">
+                            {subtitle}
+                        </p>
+                        
+                        <div className="space-y-4">
+                            {details.length > 0 && (
+                                <>
+                                    <p className="text-lg font-semibold text-white">What happened:</p>
+                                    <ul className="space-y-3 text-zinc-300 text-base">
+                                        {details.map((detail, index) => (
+                                            <li key={index} className="flex items-center gap-2">
+                                                <span className="text-[#E42325]">▸</span>
+                                                {detail}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
+                            <div className="space-y-2 text-zinc-300">
+                                <p className="flex items-center gap-2">
+                                    <span className="text-[#E42325]">📍</span>
+                                    {location}
+                                </p>
+                                <p className="flex items-center gap-2">
+                                    <span className="text-[#E42325]">🕰️</span>
+                                    {time}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <Link 
+                            href={registrationLink}
+                            className="inline-block bg-[#E42325] text-white px-6 py-2.5 rounded-full text-base font-semibold hover:bg-[#c41f21] transition-colors"
+                        >
+                            View Event Details
+                        </Link>
+                    </div>
+
+                    {/* Image */}
+                    <div className="order-first md:order-last relative h-[300px] md:h-[400px] rounded-xl overflow-hidden">
+                        <Image
+                            src={backgroundImage}
+                            alt={title}
+                            fill
+                            className="object-cover transition-all duration-500 hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority
+                        />
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     if (isUpcoming) {
         return (
@@ -180,11 +252,13 @@ export default function EventHero({
 
                 {/* Image */}
                 <div className="relative h-[400px] rounded-xl overflow-hidden">
-                    <div 
-                        className="absolute inset-0 bg-cover bg-center grayscale-[60%] brightness-[65%] hover:grayscale-0 hover:brightness-90 transition-all duration-500"
-                        style={{ 
-                            backgroundImage: `url(${backgroundImage})`
-                        }}
+                    <Image
+                        src={backgroundImage}
+                        alt={title}
+                        fill
+                        className="object-cover transition-all duration-500 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
                     />
                 </div>
             </div>
