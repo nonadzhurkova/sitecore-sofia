@@ -27,9 +27,9 @@ export default function Home() {
         title="Sitecore User Group Sofia: Fall 2025 Edition"
         subtitle="​We’re thrilled to invite you to the second edition of the Sitecore Sofia User Group Event, hosted by Americaneagle.com!"
         details={[
-          "6:30–7:00 — Sitecore for non‑technical audiences",
-          "7:15–7:45 — Inside Sitecore Search: extractor & search flow",
-          "7:45–8:30 — Networking & Q&A",
+          "18:30–19:00 — Sitecore for non‑technical audiences",
+          "19:15–19:45 — Inside Sitecore Search: extractor & search flow",
+          "19:45–20:30 — Networking & Q&A",
           "Food and drinks provided",
           "Special merch giveaways",
         ]}
