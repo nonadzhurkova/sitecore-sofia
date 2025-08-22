@@ -1,45 +1,49 @@
-import Image from "next/image";
-import Link from "next/link";
-import Hero from "./components/hero";
 import About from "./components/about-box";
-import EventHero from "./components/event-hero";
 import CookieConsentBanner from "./components/CookieConsentBanner";
+import EventCardList from "./components/EventCardList";
+import EventHero from "./components/event-hero";
+import Hero from "./components/hero";
+import { events } from "./data/events";
 
 export default function Home() {
+  const eventCards = Object.entries(events).map(([slug, event]) => ({
+    href: `/past-events/${slug}`,
+    title: event.title,
+    date: event.date,
+    location: event.location,
+    shortDescription: event.shortDescription,
+    thumbnail: event.thumbnail,
+  }));
   return (
     <div className="overflow-x-hidden">
-      <Hero 
+      <Hero
         title="Welcome to Sitecore Sofia User Group"
         subtitle="Join Our Community of Sitecore Developers, Architects, and Enthusiasts"
         backgroundImage="/sofia.jpg"
       />
-      <About/>
+      <About />
 
-      <EventHero  
-        title="SUGCON 2025 Highlights & Live Coding - June 11th"
-        subtitle="This event has passed. Check out the presentation, resources, and photo gallery from our exciting evening featuring SUGCON insights and live website development!"
+      <EventHero
+        title="Sitecore User Group Sofia: Fall 2025 Edition"
+        subtitle="​We’re thrilled to invite you to the second edition of the Sitecore Sofia User Group Event, hosted by Americaneagle.com!"
         details={[
-          "SUGCON 2025 key takeaways and experiences",
-          "Live coding demo of this website",
-          "Photo gallery from the event",
-          "Presentation and resources available"
+          "18:30–19:00 — Sitecore for non‑technical audiences",
+          "19:15–19:45 — Inside Sitecore Search: extractor & search flow",
+          "19:45–20:30 — Networking & Q&A",
+          "Food and drinks provided",
+          "Special merch giveaways",
         ]}
         location="Campus X, Sofia"
-        time="June 11th, 2025"
-        registrationLink="/past-events/june-2025-meetup"
-        backgroundImage="/events/june-2025-meetup/gallery/Image (1).jpg"
-        isPast={true}
+        time="September 30th, 2025"
+        registrationLink="https://lu.ma/tn8ocr2d?fbclid=IwY2xjawMU-ntleHRuA2FlbQIxMQBicmlkETBqTTE2UEdRcU12ZWZQUFpSAR5Z3g75yQ_hnyHeSJ2CC3Vjj5sjuR7JaM-XKq2g5t-UBvxxbRZvNO2zeAV1aw_aem_Oc2yaJY1jVMt_myotDnesA"
+        backgroundImage="/events/june-2025-meetup/gallery/Image (3).jpg"
+        isPast={false}
       />
 
-      <EventHero 
-        title="Save the Date - September 2025"
-        subtitle="Our next big event is coming! Stay tuned for more details about this exciting gathering of the Sitecore community."
-        details={[]}
-        location="Sofia, Bulgaria"
-        time="September 2025"
-        registrationLink="#"
-        backgroundImage="/sofia.jpg"
-        isUpcoming={true}
+      <EventCardList
+        title="Past Events"
+        subtitle="Browse highlights, recordings, and resources from previous meetups."
+        events={eventCards}
       />
       <CookieConsentBanner />
     </div>
