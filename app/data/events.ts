@@ -23,6 +23,21 @@ export interface EventMap {
 }
 
 export const events: EventMap = {
+  'september-2025-meetup': {
+    id: '2',
+    title: 'Sitecore User Group Sofia: Fall 2025 Edition',
+    date: 'September 30, 2025',
+    location: 'Campus X, Sofia',
+    thumbnail: '/events/june-2025-meetup/gallery/Image (3).jpg',
+    shortDescription: 'The second edition of Sitecore Sofia User Group, hosted by Americaneagle.com. Sessions covered Sitecore for non-technical audiences and an in-depth look at Sitecore Search — extractor & search flow.',
+    description: `The second edition of the Sitecore Sofia User Group Event was hosted by Americaneagle.com at Campus X, Sofia.
+
+The evening featured two engaging sessions. The first session focused on making Sitecore accessible to non-technical audiences, breaking down complex concepts into relatable language for business stakeholders. The second session dived deep inside Sitecore Search, exploring the extractor pipeline and the end-to-end search flow.
+
+The event wrapped up with a networking session, Q&A, food, drinks, and special merch giveaways — bringing the Sitecore community closer together.`,
+    coverImage: '/events/june-2025-meetup/gallery/Image (3).jpg',
+    resources: []
+  },
   'june-2025-meetup': {
     id: '1',
     title: 'Sitecore Sofia User Group June 2025',
