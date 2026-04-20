@@ -37,7 +37,7 @@ export default function Home() {
         ]}
         location="Online"
         time="April 24, 12:00 (Sofia time)"
-        registrationLink="https://lnkd.in/dWS8g_QA"
+        registrationLink="https://forms.gle/zd5cXxR9dt3tT9NQ7"
         backgroundImage="/mcp.jpg"
       />
 
