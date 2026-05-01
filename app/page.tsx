@@ -24,21 +24,14 @@ export default function Home() {
       <About />
 
       <EventHero
-        title="SUGCON Recap: Sitecore AI, Architecture & Digital Experience"
-        subtitle="Sitecore Sofia User Group is organizing an online event to share key takeaways from SUGCON, focusing on Sitecore AI, architecture, and the evolving digital experience landscape."
-        details={[
-          "Four Pillars, Four Platforms: A Practical Comparison of Sitecore AI and Its Main Competitors",
-          "Post-Quantum Cryptography — Why It Matters for Sitecore Developers (Right Now)",
-          "The Sitecore AI Migration Middle State Nobody Talks About",
-          "Exploring Sitecore AI Publishing — How to Make Your Authors Love Publishing Again",
-          "MC-what-the-P is that? And how does it relate to Sitecore",
-          "How ChatGPT, Gemini & Co. \"see\" your Sitecore site",
-          "CDP & Personalize highlights",
-        ]}
-        location="Online"
-        time="April 24, 12:00 (Sofia time)"
-        registrationLink="https://forms.gle/zd5cXxR9dt3tT9NQ7"
-        backgroundImage="/mcp.jpg"
+        title="Sitecore Sofia User Group: June 2026 Edition"
+        subtitle="We're planning an in-person event in June — details coming soon. Stay tuned!"
+        details={[]}
+        location="Sofia"
+        time="June 2026"
+        registrationLink=""
+        backgroundImage="/sofia.jpg"
+        isUpcoming={true}
       />
 
       <EventCardList

@@ -126,7 +126,12 @@ export default async function EventPage({ params }: Props) {
       <div className="prose max-w-none mb-12">
         {event.description.split('\n\n').map((paragraph, index) => (
           <p key={index} className="text-lg text-zinc-600 mb-6 last:mb-0">
-            {paragraph}
+            {paragraph.split('\n').map((line, lineIndex, arr) => (
+              <span key={lineIndex}>
+                {line}
+                {lineIndex < arr.length - 1 && <br />}
+              </span>
+            ))}
           </p>
         ))}
       </div>

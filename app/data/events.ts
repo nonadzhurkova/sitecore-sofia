@@ -23,6 +23,40 @@ export interface EventMap {
 }
 
 export const events: EventMap = {
+  'april-2026-meetup': {
+    id: '3',
+    title: 'SUGCON Recap + CDP & Personalize',
+    date: 'April 24, 2026',
+    location: 'Online',
+    thumbnail: '/mcp.jpg',
+    shortDescription: 'An online event in two parts: a SUGCON recap covering Sitecore AI, post-quantum cryptography, MCP, architecture, and publishing — followed by a dedicated CDP & Personalize session.',
+    description: `An online event in two parts — a SUGCON Europe recap and a dedicated Sitecore CDP & Personalize session.
+
+🎤 SUGCON Recap — Nona Dzhurkova & Yonko Borisov
+Fresh from SUGCON Europe in London, Nona and Yonko shared firsthand insights and key takeaways from the sessions they attended:
+• Four Pillars, Four Platforms: A Practical Comparison of Sitecore AI and Its Main Competitors
+• Post-Quantum Cryptography — Why It Matters for Sitecore Developers (Right Now)
+• The Sitecore AI Migration Middle State Nobody Talks About
+• Exploring Sitecore AI Publishing — How to Make Your Authors Love Publishing Again
+• MC-what-the-P is that? And how does it relate to Sitecore
+• How ChatGPT, Gemini & Co. "see" your Sitecore site
+
+🎤 Sitecore CDP & Personalize — Stefan Zhuntovski
+Stefan Zhuntovski, Software Engineer at Americaneagle.com, led a deep dive into Sitecore CDP and Sitecore Personalize, exploring how these powerful tools help businesses deliver more meaningful, data-driven customer experiences.`,
+    coverImage: '/mcp.jpg',
+    resources: [
+      {
+        title: 'Event Recording',
+        url: 'https://www.youtube.com/watch?v=ppouRKKj92E',
+        icon: '🎥'
+      },
+      {
+        title: 'Event Presentation',
+        url: '/events/april-2026/SUGCON-2026%20FINAL.pptx',
+        icon: '📑'
+      }
+    ]
+  },
   'september-2025-meetup': {
     id: '2',
     title: 'Sitecore User Group Sofia: Fall 2025 Edition',
