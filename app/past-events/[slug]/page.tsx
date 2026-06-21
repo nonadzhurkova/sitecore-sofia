@@ -152,6 +152,13 @@ export default async function EventPage({ params }: Props) {
               <span className="text-zinc-900">{resource.title}</span>
             </a>
           ))}
+          <Link
+            href="/materials"
+            className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <span className="text-2xl">📚</span>
+            <span className="text-zinc-900">View all session materials →</span>
+          </Link>
         </div>
       </div>
 

@@ -23,6 +23,28 @@ export interface EventMap {
 }
 
 export const events: EventMap = {
+  'may-2026': {
+    id: '4',
+    title: 'Lunch & Learn: AI Tools for Developers + Sitecore Content Hub Deep Dive',
+    date: 'May 27, 2026',
+    location: 'Sofia',
+    thumbnail: '/events/may-2026/gallery/PXL_20260527_090346689.jpg',
+    shortDescription: 'A Lunch & Learn featuring two sessions: AI-powered developer tools (Jira aggregator, timecard generator, and Project Estimator) and a deep dive into Sitecore Content Hub development.',
+    description: `A Lunch & Learn session featuring two exciting presentations from our community members.
+
+🎤 AI Tools for Developers — Nona Dzhurkova
+Nona showcased two AI tools built to solve real developer pain points — a personal command center that aggregates your Jira tickets across all projects, combines them with your calendar meetings, and generates your timecard, and the Project Estimator, which uses AI to estimate story complexity in seconds.
+
+🎤 Sitecore Content Hub Deep Dive — Yonko Borisov
+Yonko shared hands-on experience from a real client project, covering:
+• Triggers, Actions & Scripts — how C# scripts automate workflows, validate data, and send notifications
+• Email Notifications — including a fun discovery that email templates have no Create button in the UI (Postman to the rescue)
+• Validation & Security Patterns — role-based field editing, file type enforcement, and policy owner validation
+• External Components — building React + Vite components that extend the Content Hub UI
+• Platform Limitations — real issues hit in production and how they were worked around with Sitecore support`,
+    coverImage: '/events/may-2026/gallery/PXL_20260527_090346689.jpg',
+    resources: []
+  },
   'april-2026-meetup': {
     id: '3',
     title: 'SUGCON Recap + CDP & Personalize',

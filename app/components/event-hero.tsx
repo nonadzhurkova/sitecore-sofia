@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from 'react';
 import confetti from 'canvas-confetti';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useInView } from '../hooks/useInView';
 
 interface EventHeroProps {
     title: string;
@@ -15,22 +16,25 @@ interface EventHeroProps {
     backgroundImage: string;
     isUpcoming?: boolean;
     isPast?: boolean;
+    eventLink?: string;
 }
 
-export default function EventHero({ 
-    title, 
-    subtitle, 
-    details = [], 
-    location, 
-    time, 
-    registrationLink, 
-    backgroundImage, 
+export default function EventHero({
+    title,
+    subtitle,
+    details = [],
+    location,
+    time,
+    registrationLink,
+    backgroundImage,
     isUpcoming = false,
-    isPast = false
+    isPast = false,
+    eventLink = ""
 }: EventHeroProps) {
     // Rest of the component stays exactly the same
     const [isHovering, setIsHovering] = useState(false);
     const hoverTimerRef = useRef<NodeJS.Timeout>(null);
+    const { ref: inViewRef, isVisible: inViewVisible } = useInView();
     
     const triggerConfetti = useCallback(() => {
         const count = 200;
@@ -157,14 +161,24 @@ export default function EventHero({
         );
     }
 
+    const [showAllDetails, setShowAllDetails] = useState(false);
+    const maxPreviewItems = 4;
+    const hasMore = details.length > maxPreviewItems;
+    const visibleDetails = showAllDetails ? details : details.slice(0, maxPreviewItems);
+
     if (isUpcoming) {
         return (
-            <div className="relative max-w-4xl mx-auto px-4 mt-16 mb-24">
-                <div className="bg-white rounded-lg p-8 border-2 border-[#E42325]">
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-3">
-                            <span 
-                                className={`inline-block bg-[#E42325] text-white px-3 py-1 rounded-full text-sm font-medium transition-transform ${isHovering ? 'scale-110' : ''}`}
+            <section
+                ref={inViewRef}
+                className={`bg-zinc-900 py-16 transition-all duration-700 ease-out ${
+                    inViewVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+            >
+                <div className="max-w-6xl mx-auto px-4">
+                    <div className="grid md:grid-cols-2 gap-10 items-start">
+                        <div className="space-y-5">
+                            <span
+                                className={`inline-block bg-[#F59E0B] text-zinc-900 px-3 py-1 rounded-full text-sm font-medium transition-transform ${isHovering ? 'scale-110' : ''}`}
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
                                 onTouchStart={handleMouseEnter}
@@ -172,33 +186,63 @@ export default function EventHero({
                             >
                                 Upcoming Event
                             </span>
-                            <span className="h-px flex-1 bg-zinc-200"></span>
-                        </div>
-                        <h2 className="text-[#E42325] text-xl md:text-2xl font-bold">
-                            {title}
-                        </h2>
-                        <p className="text-zinc-600 text-base">
-                            {subtitle}
-                        </p>
-                        <div className="flex flex-wrap gap-4 text-zinc-500 text-sm">
-                            <p className="flex items-center gap-2">
-                                <span className="text-[#E42325]">📍</span>
-                                {location}
+                            <h2 className="text-white text-xl md:text-2xl font-bold">
+                                {title}
+                            </h2>
+                            <p className="text-zinc-300 text-base">
+                                {subtitle}
                             </p>
-                            <p className="flex items-center gap-2">
-                                <span className="text-[#E42325]">🕰️</span>
-                                {time}
-                            </p>
+                            <div className="flex flex-wrap gap-4 text-zinc-400 text-sm">
+                                <p className="flex items-center gap-2">
+                                    <span className="text-[#F59E0B]">📍</span>
+                                    {location}
+                                </p>
+                                <p className="flex items-center gap-2">
+                                    <span className="text-[#F59E0B]">🕰️</span>
+                                    {time}
+                                </p>
+                            </div>
+                            {visibleDetails.length > 0 && (
+                                <>
+                                    <ul className="space-y-2 text-zinc-300 text-sm">
+                                        {visibleDetails.map((detail, index) => (
+                                            <li key={index} className="flex items-center gap-2">
+                                                <span className="text-[#F59E0B]">▸</span>
+                                                {detail}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    {hasMore && !showAllDetails && (
+                                        <button
+                                            onClick={() => setShowAllDetails(true)}
+                                            className="text-[#F59E0B] text-sm hover:underline"
+                                        >
+                                            View full agenda →
+                                        </button>
+                                    )}
+                                </>
+                            )}
                         </div>
-                        <button 
-                            disabled
-                            className="inline-block bg-zinc-100 text-zinc-500 px-6 py-2 rounded-full text-sm font-semibold cursor-not-allowed border border-zinc-200"
-                        >
-                            Registration Coming Soon
-                        </button>
+                        <div className="flex flex-col items-center justify-center bg-zinc-700 rounded-xl p-8 space-y-4">
+                            <p className="text-white text-lg font-semibold text-center">Join us for this event</p>
+                            <button
+                                disabled
+                                className="border-2 border-[#F59E0B] text-[#F59E0B] rounded-full px-6 py-2 font-semibold cursor-not-allowed opacity-60"
+                            >
+                                Registration Coming Soon
+                            </button>
+                            <a
+                                href="https://www.linkedin.com/groups/10117145/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-zinc-400 hover:text-white text-sm transition-colors"
+                            >
+                                Follow us on LinkedIn for updates →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         );
     }
 
