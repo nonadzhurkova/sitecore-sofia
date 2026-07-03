@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { members, Person } from "../data/community";
 
 export const metadata: Metadata = {
@@ -10,9 +11,20 @@ export const metadata: Metadata = {
 function PersonCard({ person }: { person: Person }) {
   return (
     <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
-      <div className="bg-[#E42325] text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center">
-        {person.initials}
-      </div>
+      {person.headshot ? (
+        <div className="w-20 h-20 rounded-full overflow-hidden relative flex-shrink-0">
+          <Image
+            src={person.headshot}
+            alt={person.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div className="bg-[#E42325] text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center">
+          {person.initials}
+        </div>
+      )}
       <p className="text-lg font-bold text-zinc-900 mt-3">{person.name}</p>
       <p className="text-sm text-zinc-500">{person.title}</p>
       <p className="text-sm text-zinc-400">{person.company}</p>

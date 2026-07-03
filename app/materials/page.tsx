@@ -31,6 +31,18 @@ interface EventMaterial {
 
 const eventMaterials: EventMaterial[] = [
   {
+    title: "Claude for Developers: Best Practices",
+    date: "June 22, 2026",
+    location: "Online",
+    link: "/past-events/june-2026",
+    sessions: [
+      { speaker: "Nona Dzhurkova", title: "Claude for Developers: Best Practices" },
+    ],
+    resources: [
+      { icon: "📑", label: "Event Presentation", href: "/events/june-2026/Claude Presentation.pptx" },
+    ],
+  },
+  {
     title: "Lunch & Learn: AI Tools for Developers + Sitecore Content Hub Deep Dive",
     date: "May 27, 2026",
     location: "Sofia",
