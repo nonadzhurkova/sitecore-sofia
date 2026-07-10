@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { members } from "@/app/data/community";
 import { getAllBlogPosts, getBlogPost } from "@/app/utils/blogs";
+import CodeBlock from "@/app/components/CodeBlock";
 
 interface Props {
   params: Promise<{
@@ -107,7 +108,9 @@ export default async function BlogPostPage({ params }: Props) {
       )}
 
       <div className="prose prose-zinc max-w-none prose-a:text-[#E42325] prose-headings:text-zinc-900">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ pre: CodeBlock }}>
+          {post.content}
+        </ReactMarkdown>
       </div>
     </div>
   );
